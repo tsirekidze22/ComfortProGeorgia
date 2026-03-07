@@ -16,7 +16,7 @@ function checkRateLimit(ip: string): boolean {
   const now = Date.now();
   const requests = rateLimitMap.get(ip) || [];
   const recentRequests = requests.filter(
-    (time) => now - time < RATE_LIMIT_WINDOW
+    (time) => now - time < RATE_LIMIT_WINDOW,
   );
 
   if (recentRequests.length >= RATE_LIMIT_MAX) {
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
         { ok: true, emailFailed: false, message: "თქვენი მოთხოვნა მიღებულია" },
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -57,14 +57,14 @@ export async function POST(request: NextRequest) {
     if (!name || name.length < 2) {
       return NextResponse.json(
         { ok: false, error: "სახელი სავალდებულოა" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (!phone) {
       return NextResponse.json(
         { ok: false, error: "ტელეფონი სავალდებულოა" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       console.log("🤖 Bot detected via honeypot");
       return NextResponse.json(
         { ok: true, emailFailed: false },
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -126,7 +126,7 @@ ${message ? `მესიჯი: ${message}` : ""}
 
     try {
       await resend.emails.send({
-        from: "ComfortProGeorgia • Website <no-reply@designspace.webuild.ge>", // 🚨 CHANGE THIS TO YOUR VERIFIED DOMAIN =============================================
+        from: "ComfortProGeorgia • Website <no-reply@comfortprogeorgia.webuild.ge>", // 🚨 CHANGE THIS TO YOUR VERIFIED DOMAIN =============================================
         to: ["tsotnetsirekidze22@gmail.com"], // 🚨 CHANGE TO CLIENT EMAIL ==================================================================
         subject: "ახალი მოთხოვნა ვებგვერდიდან",
         html: emailHtml,
@@ -146,7 +146,7 @@ ${message ? `მესიჯი: ${message}` : ""}
         emailFailed,
         message: "თქვენი მოთხოვნა მიღებულია",
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("❌ API error:", error);
@@ -158,7 +158,7 @@ ${message ? `მესიჯი: ${message}` : ""}
         emailFailed: true,
         message: "თქვენი მოთხოვნა მიღებულია",
       },
-      { status: 200 }
+      { status: 200 },
     );
   }
 }
