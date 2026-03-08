@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/images/og-comfortprogeorgia.jpg",
+        url: "/assets/images/logo.jpg",
         width: 1200,
         height: 630,
       },
