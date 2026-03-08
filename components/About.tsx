@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, ReactNode, useEffect, useState } from "react";
-import Image from "next/image";
 
 interface LuxurySectionProps {
   children: ReactNode;
@@ -131,8 +130,6 @@ export function LuxuryItem({
 }
 
 export default function About() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
   const stats = [
     { number: 12, label: "პროექტი", suffix: "+" },
     { number: 4, label: "წლის გამოცდილება", suffix: "+" },
@@ -147,42 +144,13 @@ export default function About() {
         <LuxurySection className="grid lg:grid-cols-12 gap-6 mb-16 lg:mb-20">
           {/* Left Section - Video */}
           <LuxuryItem className="hidden md:block lg:col-span-7 relative h-[500px] lg:h-[650px] bg-stone-100 rounded-[32px] overflow-hidden">
-            {!isVideoPlaying ? (
-              <>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/assets/images/about-bg.jpg"
-                    alt="Interior design video"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-black/20" />
-                <button
-                  onClick={() => setIsVideoPlaying(true)}
-                  className="absolute inset-0 flex items-center justify-center group"
-                  aria-label="Play video"
-                >
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <svg
-                      className="w-8 h-8 text-stone-900 ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </button>
-              </>
-            ) : (
-              <video
-                src="/assets/videos/main-video.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                controls
-                playsInline
-              />
-            )}
+            <video
+              src="/assets/videos/main-video.mp4"
+              poster="/assets/images/about-bg.jpg"
+              className="w-full h-full object-cover"
+              controls
+              playsInline
+            />
           </LuxuryItem>
 
           {/* Right Section - Staggered text content */}
