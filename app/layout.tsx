@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "სარემონტო მომსახურება თბილისში",
     description:
       "საიმედო სარემონტო მომსახურება, ინტერიერის დიზაინი და ავეჯის დამზადება",
-    url: "https://comfortprogeorgia.webuild.ge",
+    url: "https://comfortpro.webuild.ge",
     type: "website",
     images: [
       {

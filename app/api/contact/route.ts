@@ -126,7 +126,7 @@ ${message ? `მესიჯი: ${message}` : ""}
 
     try {
       await resend.emails.send({
-        from: "ComfortProGeorgia • Website <no-reply@comfortprogeorgia.webuild.ge>", // 🚨 CHANGE THIS TO YOUR VERIFIED DOMAIN =============================================
+        from: "ComfortProGeorgia • Website <no-reply@comfortpro.webuild.ge>", // 🚨 CHANGE THIS TO YOUR VERIFIED DOMAIN =============================================
         to: ["tsotnetsirekidze22@gmail.com"], // 🚨 CHANGE TO CLIENT EMAIL ==================================================================
         subject: "ახალი მოთხოვნა ვებგვერდიდან",
         html: emailHtml,
